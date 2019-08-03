@@ -37,8 +37,8 @@ def MultiRunWrapper(args):
     return Download(*args) 
 
 if __name__ == '__main__':
-    rootDir = 'urls-357488-40w/'
-    saveDir = 'imgs-357488-40w/'
+    rootDir = 'urls-357488-389234/'
+    saveDir = 'imgs-357488-389234/'
     url_files = os.listdir(rootDir)
     #print(len(url_files))
     countExist=0
@@ -47,8 +47,9 @@ if __name__ == '__main__':
 	nameList = []
         folder_path = os.path.join(saveDir, name[:-6])
         cnt = int(name[-5])*100
-        if not os.path.isdir(folder_path):
-            os.mkdir(folder_path)
+        if os.path.isdir(folder_path):
+	    continue
+        os.mkdir(folder_path)
         urls = ExtractUrls(rootDir,name)
 	
         for j in range(len(urls)):
